@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-ar="صفحة د. محمد حمدي البريري" data-en="Dr. Mohamed Hamdy El-Berery | Internal Medicine & Nephrology Consultant">د. محمد حمدي البريري | استشاري أمراض الباطنة والكلى</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" href="./doctoricon.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        palette: {
+                            deepBlue: '#045275',
+                            medBlue: '#087597',
+                            darkCyan: '#009693',
+                            mint: '#00B59B',
+                            cream: '#F3F4D4',
+                        }
+                    },
+                    fontFamily: {
+                        arabic: ['Cairo', 'sans-serif'],
+                        english: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <script>
+        // Apply theme before first paint to avoid a flash of the wrong theme
+        (function () {
+            var saved = localStorage.getItem('theme');
+            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (saved === 'dark' || (!saved && prefersDark)) {
+                document.documentElement.classList.add('dark');
+            }
+        })();
+    </script>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #F3F4D4;
+            color: #045275;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        html.dark body {
+            background-color: #045275;
+            color: #F3F4D4;
+        }
+        body.lang-en { font-family: 'Inter', sans-serif; }
+        .smooth-transition { transition: all 0.3s ease-in-out; }
+        .video-container { position: relative; overflow: hidden; border-radius: 1rem; background: #045275; box-shadow: 0 10px 25px -5px rgba(4, 82, 117, 0.2); }
+        .video-container img,
+        .video-container video { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; transition: opacity 0.3s, transform 0.5s; }
+        .video-container:hover img,
+        .video-container:hover video { opacity: 0.75; }
+        .video-container:hover img { transform: scale(1.03); }
+        .play-btn {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 72px; height: 72px; background: #009693; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; color: #F3F4D4; font-size: 1.75rem;
+            cursor: pointer; box-shadow: 0 4px 15px rgba(0, 150, 147, 0.4); transition: transform 0.2s, background 0.2s, opacity 0.2s; z-index: 10;
+            border: none;
+        }
+        .play-btn:hover { transform: translate(-50%, -50%) scale(1.15); background: #00B59B; }
+        .play-btn.is-hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: translate(-50%, -50%) scale(0.8);
+        }
+        .play-btn-small { width: 56px; height: 56px; font-size: 1.25rem; }
+        .custom-scrollbar::-webkit-scrollbar { height: 8px; width: 8px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(243, 244, 212, 0.5); border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #087597; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #045275; }
+        .tab-content { display: none; animation: fadeIn 0.4s ease-in-out; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="antialiased selection:bg-[#00B59B] selection:text-[#F3F4D4]">
+    <nav class="bg-[#F3F4D4]/95 dark:bg-[#045275]/95 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-[#087597]/20 dark:border-[#009693]/30 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-[#045275] dark:bg-[#009693] rounded-2xl flex items-center justify-center me-3 shadow-md">
+                        <i class="fa-solid fa-user-doctor text-[#F3F4D4] text-2xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-black text-xl sm:text-2xl text-[#045275] dark:text-[#F3F4D4] leading-tight lang-text" data-ar="د. محمد حمدي البريري" data-en="Dr. Mohamed Hamdy">د. محمد حمدي البريري</h1>
+                        <span class="text-xs text-[#087597] dark:text-[#00B59B] font-bold tracking-wider lang-text" data-ar="استشاري الباطنة والكلى والسكر" data-en="Internal Medicine & Nephrology">استشاري الباطنة والكلى والسكر</span>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-3 space-x-reverse">
+                    <button id="themeToggle" onclick="toggleTheme()" aria-pressed="false" aria-label="Toggle dark mode" class="w-11 h-11 text-[#045275] dark:text-[#F3F4D4] bg-[#00B59B]/20 dark:bg-[#087597]/50 hover:bg-[#00B59B]/30 rounded-xl smooth-transition flex items-center justify-center border border-[#00B59B]/30">
+                        <i id="themeIcon" class="fa-solid fa-moon text-lg"></i>
+                    </button>
+                    <button id="langToggle" onclick="toggleLanguage()" class="px-4 py-2.5 text-sm font-bold text-[#045275] dark:text-[#F3F4D4] bg-[#00B59B]/20 dark:bg-[#087597]/50 hover:bg-[#00B59B]/30 rounded-xl smooth-transition flex items-center gap-2 border border-[#00B59B]/30">
+                        <i class="fa-solid fa-globe text-[#009693] dark:text-[#00B59B]"></i> <span id="langLabel">English</span>
+                    </button>
+                    <a href="#booking" class="hidden md:inline-flex px-6 py-2.5 bg-[#045275] dark:bg-[#009693] hover:bg-[#087597] dark:hover:bg-[#00B59B] text-[#F3F4D4] font-bold rounded-xl shadow-md smooth-transition lang-text items-center gap-2 hover:-translate-y-0.5" data-ar="احجز موعدك" data-en="Book Appointment">
+                        <i class="fa-regular fa-calendar-check text-[#00B59B] dark:text-[#045275]"></i> احجز موعدك
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="bg-gradient-to-b from-[#F3F4D4] via-white to-[#F3F4D4] dark:from-[#045275] dark:via-[#087597]/20 dark:to-[#045275] py-16 lg:py-24 overflow-hidden relative border-b border-[#087597]/10 dark:border-[#009693]/20 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="order-2 lg:order-1 lg:col-span-7 text-center lg:text-start">
+                    <div class="inline-flex items-center px-4 py-2 bg-[#009693]/10 border border-[#009693]/30 text-[#045275] dark:text-[#F3F4D4] font-bold rounded-full mb-6 text-sm shadow-sm lang-text gap-2">
+                        <i class="fa-solid fa-star text-[#00B59B]"></i> <span data-ar="خبرة أكاديمية وعملية كبيرة دلوقتي أقرب ليك" data-en="Extensive Academic & Practical Experience Now Closer to You">خبرة أكاديمية وعملية كبيرة دلوقتي أقرب ليك</span>
+                    </div>
+                    
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-[#045275] dark:text-white leading-tight mb-6 lang-text tracking-tight" data-ar="فرصة للمتابعة مع واحد من كبار استشاريي الباطنة والكلى في الصعيد!" data-en="Exceptional Care by a Leading Internal Medicine & Nephrology Consultant in Upper Egypt!">
+                        فرصة للمتابعة مع واحد من كبار استشاريي الباطنة والكلى في الصعيد!
+                    </h2>
+                    
+                    <p class="text-lg sm:text-xl text-[#087597] dark:text-blue-200 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed lang-text font-medium" data-ar="لو بقالك فترة بتأجل المتابعة أو محتاج رأي متخصص في مشاكل الكلى أو السكر، فالأحد الجاي عندك فرصة تقابل د/ محمد حمدي البريري." data-en="If you have been delaying your check-up or need expert consultation for kidney or diabetes issues, book your session now.">
+                        لو بقالك فترة بتأجل المتابعة أو محتاج رأي متخصص في مشاكل الكلى أو السكر، فالأحد الجاي عندك فرصة تقابل د/ محمد حمدي البريري.
+                    </p>
+
+                    <div class="bg-white/80 dark:bg-[#087597]/50 backdrop-blur p-6 rounded-3xl border border-[#009693]/20 dark:border-[#009693]/40 shadow-lg mb-8 inline-block text-start w-full transition-colors duration-300">
+                        <ul class="text-base sm:text-lg text-[#045275] dark:text-[#F3F4D4] space-y-3 list-none font-bold">
+                            <li class="flex items-start"><i class="fa-solid fa-circle-check text-[#00B59B] mt-1.5 me-3 text-xl"></i><span class="lang-text" data-ar="استشاري أمراض الباطنة العامة والكلى والسكر بمستشفى سوهاج الجامعي والتأمين الصحي" data-en="Consultant of Internal Medicine, Nephrology, and Diabetes at Sohag Univ. Hospital">استشاري أمراض الباطنة العامة والكلى والسكر بمستشفى سوهاج الجامعي والتأمين الصحي</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-circle-check text-[#00B59B] mt-1.5 me-3 text-xl"></i><span class="lang-text" data-ar="مدرس بكلية طب سوهاج" data-en="Lecturer at Sohag Faculty of Medicine">مدرس بكلية طب سوهاج</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-circle-check text-[#00B59B] mt-1.5 me-3 text-xl"></i><span class="lang-text" data-ar="عضو الجمعية المصرية والأوروبية لأمراض وزراعة الكلى" data-en="Member of Egyptian and European Societies of Nephrology & Transplantation">عضو الجمعية المصرية والأوروبية لأمراض وزراعة الكلى</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#booking" class="px-8 py-4 bg-[#009693] hover:bg-[#00B59B] text-[#F3F4D4] font-bold rounded-2xl shadow-lg shadow-[#009693]/30 smooth-transition flex items-center justify-center gap-3 text-lg hover:-translate-y-1">
+                            <i class="fa-solid fa-calendar-days text-[#F3F4D4]"></i>
+                            <span class="lang-text" data-ar="احجز مكانك الآن" data-en="Book Your Spot Now">احجز مكانك الآن</span>
+                        </a>
+                        <a href="#services" class="px-8 py-4 bg-white dark:bg-[#087597]/40 hover:bg-[#F3F4D4]/50 dark:hover:bg-[#087597]/60 text-[#045275] dark:text-[#F3F4D4] border-2 border-[#045275]/20 dark:border-[#00B59B]/40 font-bold rounded-2xl smooth-transition flex items-center justify-center gap-3 text-lg">
+                            <i class="fa-solid fa-stethoscope text-[#087597] dark:text-[#00B59B]"></i>
+                            <span class="lang-text" data-ar="تعرف على التخصصات" data-en="Explore Specialties">تعرف على التخصصات</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="order-1 lg:order-2 lg:col-span-5 relative flex justify-center">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-[#045275] to-[#00B59B] rounded-full blur-2xl opacity-20 transform scale-95"></div>
+                    <!-- 👉 DOCTOR PHOTO: put your image here (same folder as this HTML).
+                         Rename your photo to "img.jpg" or change the src below. -->
+                    <img src="img.jpg" alt="Dr. Mohamed Hamdy El-Berery" class="relative z-10 w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 object-cover rounded-full border-8 border-white dark:border-[#087597] shadow-2xl shadow-[#045275]/30" onerror="this.src='https://placehold.co/500x500/045275/F3F4D4?text=Put+img.jpg+here'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white dark:bg-[#045275]/90 relative transition-colors duration-300" id="services">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="px-4 py-1.5 bg-[#087597]/10 dark:bg-[#009693]/30 text-[#087597] dark:text-[#00B59B] font-bold rounded-full text-sm inline-block mb-3 lang-text" data-ar="خدمات طبية متكاملة" data-en="Comprehensive Medical Services">خدمات طبية متكاملة</span>
+                <h3 class="text-3xl sm:text-4xl font-black text-[#045275] dark:text-white mb-4 lang-text" data-ar="التخصصات وحالات المتابعة" data-en="Specialties & Conditions">التخصصات وحالات المتابعة</h3>
+                <p class="text-lg text-[#087597] dark:text-blue-200 lang-text" data-ar="لو بتعاني من أي من الأعراض التالية، دي فرصة كويسة للمتابعة والكشف مع دكتور من أصحاب الخبرة الكبيرة." data-en="If you suffer from any of these conditions, this is your opportunity for expert consultation.">
+                    لو بتعاني من أي من الأعراض التالية، دي فرصة كويسة للمتابعة والكشف مع دكتور من أصحاب الخبرة الكبيرة.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <div class="bg-[#F3F4D4]/40 dark:bg-[#087597]/30 rounded-3xl p-8 border border-[#009693]/20 dark:border-[#009693]/30 hover:shadow-xl hover:-translate-y-2 smooth-transition flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-[#045275] dark:bg-[#009693] text-[#F3F4D4] rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-md">
+                            <i class="fa-solid fa-droplet text-[#00B59B]"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold text-[#045275] dark:text-white mb-3 lang-text" data-ar="السكر ومضاعفاته" data-en="Diabetes & Complications">السكر ومضاعفاته</h4>
+                        <p class="text-[#087597] dark:text-blue-100 lang-text font-medium" data-ar="متابعة دقيقة ومستمرة لمستويات السكر في الدم، والوقاية الفعالة من مضاعفات القدم السكري وتأثير السكر على الكلى والأعصاب." data-en="Precise monitoring of blood sugar and effective prevention of diabetic complications.">متابعة دقيقة ومستمرة لمستويات السكر في الدم، والوقاية الفعالة من مضاعفات القدم السكري وتأثير السكر على الكلى والأعصاب.</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-[#009693]/20 dark:border-[#009693]/40 flex items-center text-[#009693] dark:text-[#00B59B] font-bold text-sm">
+                        <i class="fa-solid fa-circle-check me-2 text-[#00B59B]"></i> <span class="lang-text" data-ar="تشخيص وعلاج متقدم" data-en="Advanced Care">تشخيص وعلاج متقدم</span>
+                    </div>
+                </div>
+
+
+                <div class="bg-[#F3F4D4]/40 dark:bg-[#087597]/30 rounded-3xl p-8 border border-[#009693]/20 dark:border-[#009693]/30 hover:shadow-xl hover:-translate-y-2 smooth-transition flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-[#087597] dark:bg-[#009693] text-[#F3F4D4] rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-md shadow-[#087597]/20">
+                            <i class="fa-solid fa-heart-pulse text-[#F3F4D4]"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold text-[#045275] dark:text-white mb-3 lang-text" data-ar="ارتفاع ضغط الدم" data-en="Hypertension">ارتفاع ضغط الدم</h4>
+                        <p class="text-[#087597] dark:text-blue-100 lang-text font-medium" data-ar="برامج علاجية حديثة للسيطرة على ضغط الدم المرتفع وحماية الكلى وعضلة القلب والأوعية الدموية من أي مضاعفات." data-en="Modern therapeutic programs to control high blood pressure and protect vital organs.">برامج علاجية حديثة للسيطرة على ضغط الدم المرتفع وحماية الكلى وعضلة القلب والأوعية الدموية من أي مضاعفات.</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-[#009693]/20 dark:border-[#009693]/40 flex items-center text-[#009693] dark:text-[#00B59B] font-bold text-sm">
+                        <i class="fa-solid fa-circle-check me-2 text-[#00B59B]"></i> <span class="lang-text" data-ar="حماية شاملة للأعضاء" data-en="Comprehensive Protection">حماية شاملة للأعضاء</span>
+                    </div>
+                </div>
+
+
+                <div class="bg-[#F3F4D4]/40 dark:bg-[#087597]/30 rounded-3xl p-8 border border-[#009693]/20 dark:border-[#009693]/30 hover:shadow-xl hover:-translate-y-2 smooth-transition flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-[#009693] dark:bg-[#00B59B] text-[#F3F4D4] dark:text-[#045275] rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-md shadow-[#009693]/20">
+                            <i class="fa-solid fa-kidneys text-[#F3F4D4] dark:text-[#045275]"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold text-[#045275] dark:text-white mb-3 lang-text" data-ar="مشاكل ووظائف الكلى" data-en="Kidney Problems & Functions">مشاكل ووظائف الكلى</h4>
+                        <p class="text-[#087597] dark:text-blue-100 lang-text font-medium" data-ar="تشخيص وعلاج أمراض الكلى المزمنة والقصور الكلوي، متابعة مرضى الغسيل الكلوي وإدارة اضطرابات الأملاح." data-en="Diagnosis and treatment of chronic kidney diseases, monitoring dialysis patients.">تشخيص وعلاج أمراض الكلى المزمنة والقصور الكلوي، متابعة مرضى الغسيل الكلوي وإدارة اضطرابات الأملاح.</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-[#009693]/20 dark:border-[#009693]/40 flex items-center text-[#009693] dark:text-[#00B59B] font-bold text-sm">
+                        <i class="fa-solid fa-circle-check me-2 text-[#00B59B]"></i> <span class="lang-text" data-ar="عناية متخصصة للكلى" data-en="Specialized Renal Care">عناية متخصصة للكلى</span>
+                    </div>
+                </div>
+
+
+                <div class="bg-[#F3F4D4]/40 dark:bg-[#087597]/30 rounded-3xl p-8 border border-[#009693]/20 dark:border-[#009693]/30 hover:shadow-xl hover:-translate-y-2 smooth-transition flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-[#00B59B] text-[#045275] rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-md shadow-[#00B59B]/30">
+                            <i class="fa-solid fa-user-doctor text-[#045275]"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold text-[#045275] dark:text-white mb-3 lang-text" data-ar="أمراض الباطنة العامة" data-en="General Internal Medicine">أمراض الباطنة العامة</h4>
+                        <p class="text-[#087597] dark:text-blue-100 lang-text font-medium" data-ar="فحص شامل وتقييم دقيق لمختلف أمراض الباطنة للبالغين، اضطرابات الجهاز الهضمي، وعلاج الأمراض المزمنة." data-en="Comprehensive examination and evaluation of various internal diseases for adults.">فحص شامل وتقييم دقيق لمختلف أمراض الباطنة للبالغين، اضطرابات الجهاز الهضمي، وعلاج الأمراض المزمنة.</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-[#009693]/20 dark:border-[#009693]/40 flex items-center text-[#009693] dark:text-[#00B59B] font-bold text-sm">
+                        <i class="fa-solid fa-circle-check me-2 text-[#00B59B]"></i> <span class="lang-text" data-ar="رعاية شاملة للبالغين" data-en="Adult Healthcare">رعاية شاملة للبالغين</span>
+                    </div>
+                </div>
+
+  
+                <div class="bg-gradient-to-br from-[#045275] to-[#087597] text-[#F3F4D4] rounded-3xl p-8 shadow-xl hover:-translate-y-2 smooth-transition md:col-span-2 lg:col-span-2 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-14 h-14 bg-[#00B59B] text-[#045275] rounded-2xl flex items-center justify-center text-2xl shadow-md">
+                                <i class="fa-solid fa-flask-vial text-[#045275]"></i>
+                            </div>
+                            <div>
+                                <span class="text-[#00B59B] text-xs font-bold uppercase tracking-wider block lang-text" data-ar="تميز تخصصي فريد" data-en="Unique Specialization">تميز تخصصي فريد</span>
+                                <h4 class="text-2xl sm:text-3xl font-black text-[#F3F4D4] lang-text" data-ar="قصة السموم وعلاج التسمم" data-en="Toxicology & Poison Treatment">قصة السموم وعلاج التسمم</h4>
+                            </div>
+                        </div>
+                        <p class="text-blue-100 lang-text leading-relaxed text-base sm:text-lg font-medium" data-ar="التميز في التخصص حاجة مش ساهلة خالص! وعلشان كدا دايما بيكون معانا المتميزين من الأطباء في مجالهم. يمتلك د. محمد حمدي البريري خبرة متخصصة رفيعة المستوى في التعامل الفوري مع حالات التسمم، تقييم السموم الطبية، وتقديم الرعاية الحرجة العاجلة باستخدام أحدث البروتوكولات الطبية العالمية لإنقاذ حياة المرضى." data-en="Excellence in specialization is not easy! Dr. Mohamed Hamdy El-Berery possesses high-level specialized expertise in handling poisoning cases, medical toxicology assessment, and critical care using the latest global medical protocols.">
+                            التميز في التخصص حاجة مش ساهلة خالص! وعلشان كدا دايما بيكون معانا المتميزين من الأطباء في مجالهم. يمتلك د. محمد حمدي البريري خبرة متخصصة رفيعة المستوى في التعامل الفوري مع حالات التسمم، تقييم السموم الطبية، وتقديم الرعاية الحرجة العاجلة باستخدام أحدث البروتوكولات الطبية العالمية لإنقاذ حياة المرضى.
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-white/20 flex items-center justify-between text-[#00B59B] font-bold">
+                        <span class="lang-text" data-ar="كفاءة عالية في الحالات الحرجة" data-en="High Efficiency in Critical Cases">كفاءة عالية في الحالات الحرجة</span>
+                        <i class="fa-solid fa-shield-heart text-2xl text-[#00B59B]"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-[#045275] text-[#F3F4D4] relative overflow-hidden" id="diet-plans">
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-[#087597] rounded-full blur-3xl opacity-40"></div>
+        <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-[#009693] rounded-full blur-3xl opacity-40"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 max-w-4xl mx-auto">
+                <span class="px-4 py-1.5 bg-[#009693]/30 text-[#00B59B] font-bold rounded-full text-sm inline-block mb-3 lang-text" data-ar="دليل التغذية العلاجية" data-en="Therapeutic Nutrition Guide">دليل التغذية العلاجية</span>
+                <h3 class="text-3xl sm:text-5xl font-black mb-6 lang-text text-[#F3F4D4]" data-ar="الأنظمة الغذائية لمرضى الكلى" data-en="Comprehensive Kidney Diet Plans">الأنظمة الغذائية لمرضى الكلى</h3>
+                <p class="text-lg text-blue-100 leading-relaxed lang-text font-medium" data-ar="من منطلق الرعاية المتكاملة، يقدم د. محمد حمدي أنظمة غذائية أسبوعية مفصلة. اختر النظام المناسب لحالتك واقرأ الإرشادات الطبية بعناية." data-en="As part of comprehensive care, Dr. Mohamed Hamdy provides detailed weekly diet plans. Choose the plan appropriate for your condition.">
+                    من منطلق الرعاية المتكاملة، يقدم د. محمد حمدي أنظمة غذائية أسبوعية مفصلة. اختر النظام المناسب لحالتك واقرأ الإرشادات الطبية بعناية.
+                </p>
+            </div>
+
+
+            <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12">
+                <button onclick="switchTab('pre-dialysis')" id="btn-pre-dialysis" class="px-8 py-4 rounded-2xl font-bold text-lg smooth-transition border-2 border-[#00B59B] bg-[#009693] text-[#F3F4D4] shadow-lg shadow-[#009693]/30 flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-file-medical"></i>
+                    <span class="lang-text" data-ar="نظام القصور الكلوي (قبل الغسيل)" data-en="Pre-Dialysis Diet Plan">نظام القصور الكلوي (قبل الغسيل)</span>
+                </button>
+                <button onclick="switchTab('hemodialysis')" id="btn-hemodialysis" class="px-8 py-4 rounded-2xl font-bold text-lg smooth-transition border-2 border-[#087597] bg-[#087597]/50 text-[#F3F4D4] hover:bg-[#087597] flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-file-medical-alt"></i>
+                    <span class="lang-text" data-ar="نظام الغسيل الدموي المنتظم" data-en="Hemodialysis Diet Plan">نظام الغسيل الدموي المنتظم</span>
+                </button>
+            </div>
+
+
+            <div id="tab-pre-dialysis" class="tab-content active">
+                <div class="bg-[#087597]/40 backdrop-blur-xl border border-[#009693]/40 rounded-3xl p-6 md:p-10 shadow-2xl">
+                    <div class="flex flex-col md:flex-row justify-between items-center border-b border-[#009693]/40 pb-6 mb-8 gap-4">
+                        <div>
+                            <h4 class="text-2xl font-bold text-[#F3F4D4] mb-2 lang-text" data-ar="نظام غذائي أسبوعي لمرضى القصور الكلوي المزمن" data-en="Weekly Diet Plan for Chronic Kidney Disease">نظام غذائي أسبوعي لمرضى القصور الكلوي المزمن</h4>
+                            <p class="text-[#00B59B] font-semibold lang-text" data-ar="للمرضى غير الخاضعين للغسيل الكلوي – نموذج بالغين" data-en="For Non-Dialysis Patients - Adult Model">للمرضى غير الخاضعين للغسيل الكلوي – نموذج بالغين</p>
+                        </div>
+                        <!-- 👉 PRE-DIALYSIS PDF: put this file next to the HTML.
+                             If you rename it, update the filename in href below. -->
+                        <a href="renal_diet_pre_dialysis_ar(1).pdf" download class="px-6 py-3 bg-[#00B59B] hover:bg-[#009693] text-[#045275] hover:text-[#F3F4D4] font-bold rounded-xl flex items-center gap-2 smooth-transition shrink-0 shadow-md">
+                            <i class="fa-solid fa-download"></i>
+                            <span class="lang-text" data-ar="تحميل PDF" data-en="Download PDF">تحميل PDF</span>
+                        </a>
+                    </div>
+                    <div class="bg-[#045275]/80 border border-[#00B59B]/40 rounded-2xl p-5 mb-8 flex gap-4 items-start">
+                        <i class="fa-solid fa-triangle-exclamation text-[#00B59B] text-xl mt-1"></i>
+                        <p class="text-[#F3F4D4] text-sm md:text-base lang-text" data-ar="تنبيه: لا يوجد نظام واحد يناسب كل مرضى الكلى. تُضبط البروتينات والبوتاسيوم والفوسفور والسوائل حسب الوزن ومرحلة المرض والتحاليل والأدوية." data-en="Warning: There is no single diet that fits all kidney patients. Protein, potassium, phosphorus, and fluids are adjusted based on weight, disease stage, tests, and medications.">تنبيه: لا يوجد نظام واحد يناسب كل مرضى الكلى. تُضبط البروتينات والبوتاسيوم والفوسفور والسوائل حسب الوزن ومرحلة المرض والتحاليل والأدوية.</p>
+                    </div>
+                    <div class="overflow-x-auto custom-scrollbar pb-4">
+                        <table class="w-full text-start min-w-[800px]">
+                            <thead>
+                                <tr class="bg-[#045275] text-[#00B59B] text-sm">
+                                    <th class="p-4 rounded-s-2xl font-bold w-24 text-center lang-text" data-ar="اليوم" data-en="Day">اليوم</th>
+                                    <th class="p-4 font-bold lang-text" data-ar="الإفطار" data-en="Breakfast">الإفطار</th>
+                                    <th class="p-4 font-bold lang-text" data-ar="سناك" data-en="Snack">سناك</th>
+                                    <th class="p-4 font-bold lang-text" data-ar="الغداء" data-en="Lunch">الغداء</th>
+                                    <th class="p-4 rounded-e-2xl font-bold lang-text" data-ar="العشاء" data-en="Dinner">العشاء</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-[#009693]/20 text-[#F3F4D4] text-sm md:text-base">
+                                <tr class="hover:bg-[#087597]/30 smooth-transition"><td class="p-4 font-bold text-center text-[#00B59B] bg-[#045275]/50 lang-text" data-ar="السبت" data-en="Saturday">السبت</td><td class="p-4 lang-text" data-ar="بيضة مسلوقة + نصف رغيف بلدي صغير + خيار." data-en="Boiled egg + half small local bread + cucumber.">بيضة مسلوقة + نصف رغيف بلدي صغير + خيار.</td><td class="p-4 text-[#00B59B] lang-text" data-ar="تفاحة صغيرة." data-en="Small apple.">تفاحة صغيرة.</td><td class="p-4 lang-text" data-ar="90 جم دجاج منزوع الجلد مشوي/مسلوق + 1 كوب أرز مطبوخ + كوب كوسة أو فاصوليا خضراء مطبوخة." data-en="90g skinless chicken + 1 cup cooked rice + cup cooked zucchini or green beans.">90 جم دجاج منزوع الجلد مشوي/مسلوق + 1 كوب أرز مطبوخ + كوب كوسة أو فاصوليا خضراء مطبوخة.</td><td class="p-4 lang-text" data-ar="ساندوتش منزلي من 2 ملعقة كبيرة جبن قليل الملح والفوسفور + نصف رغيف صغير + خس/خيار." data-en="Sandwich (2 tbsp low salt/phos cheese) + half small bread + lettuce/cucumber.">ساندوتش منزلي من 2 ملعقة كبيرة جبن قليل الملح والفوسفور + نصف رغيف صغير + خس/خيار.</td></tr>
+                                <tr class="hover:bg-[#087597]/30 smooth-transition"><td class="p-4 font-bold text-center text-[#00B59B] bg-[#045275]/50 lang-text" data-ar="الأحد" data-en="Sunday">الأحد</td><td class="p-4 lang-text" data-ar="2 بياض بيض + نصف رغيف صغير + خيار." data-en="2 egg whites + half small bread + cucumber.">2 بياض بيض + نصف رغيف صغير + خيار.</td><td class="p-4 text-[#00B59B] lang-text" data-ar="كمثرى صغيرة." data-en="Small pear.">كمثرى صغيرة.</td><td class="p-4 lang-text" data-ar="100 جم سمك مشوي + 1 كوب مكرونة مطبوخة + كوب خضار مناسب (كوسة/قرنبيط)." data-en="100g grilled fish + 1 cup cooked pasta + cup veggies (zucchini/cauliflower).">100 جم سمك مشوي + 1 كوب مكرونة مطبوخة + كوب خضار مناسب (كوسة/قرنبيط).</td><td class="p-4 lang-text" data-ar="شوربة خضار منزلية قليلة الملح + نصف رغيف صغير + 60 جم دجاج مفتت داخل الشوربة." data-en="Low salt vegetable soup + half small bread + 60g shredded chicken in soup.">شوربة خضار منزلية قليلة الملح + نصف رغيف صغير + 60 جم دجاج مفتت داخل الشوربة.</td></tr>
+                                <tr class="hover:bg-[#087597]/30 smooth-transition"><td class="p-4 font-bold text-center text-[#00B59B] bg-[#045275]/50 lang-text" data-ar="الاثنين" data-en="Monday">الاثنين</td><td class="p-4 lang-text" data-ar="بيضة مسلوقة + نصف رغيف صغير + فلفل/خيار." data-en="Boiled egg + half small bread + pepper/cucumber.">بيضة مسلوقة + نصف رغيف صغير + فلفل/خيار.</td><td class="p-4 text-[#00B59B] lang-text" data-ar="كوب عنب صغير (10–12 حبة)." data-en="Small cup grapes (10-12).">كوب عنب صغير (10–12 حبة).</td><td class="p-4 lang-text" data-ar="90 جم لحم أحمر قليل الدهن مطهو + 1 كوب أرز + كوب فاصوليا خضراء." data-en="90g lean red meat + 1 cup rice + cup green beans.">90 جم لحم أحمر قليل الدهن مطهو + 1 كوب أرز + كوب فاصوليا خضراء.</td><td class="p-4 lang-text" data-ar="ساندوتش تونة مصفاة بالماء (60 جم) مع ليمون وخس، دون مخلل أو ملح مضاف." data-en="Water-drained tuna sandwich (60g) with lemon/lettuce, no pickles/added salt.">ساندوتش تونة مصفاة بالماء (60 جم) مع ليمون وخس، دون مخلل أو ملح مضاف.</td></tr>
+                                <tr class="hover:bg-[#087597]/30 smooth-transition"><td class="p-4 font-bold text-center text-[#00B59B] bg-[#045275]/50 lang-text" data-ar="الثلاثاء" data-en="Tuesday">الثلاثاء</td><td class="p-4 lang-text" data-ar="2 بياض بيض + نصف رغيف صغير + خيار." data-en="2 egg whites + half small bread + cucumber.">2 بياض بيض + نصف رغيف صغير + خيار.</td><td class="p-4 text-[#00B59B] lang-text" data-ar="تفاحة صغيرة." data-en="Small apple.">تفاحة صغيرة.</td><td class="p-4 lang-text" data-ar="90 جم دجاج + 1 كوب مكرونة + كوب كوسة/ملوخية مطبوخة دون مرقة جاهزة." data-en="90g chicken + 1 cup pasta + cup zucchini/molokhia cooked without bouillon cubes.">90 جم دجاج + 1 كوب مكرونة + كوب كوسة/ملوخية مطبوخة دون مرقة جاهزة.</td><td class="p-4 lang-text" data-ar="بياض بيضتين + قطعة خبز صغيرة + سلطة خيار وخس." data-en="2 egg whites + small bread piece + cucumber/lettuce salad.">بياض بيضتين + قطعة خبز صغيرة + سلطة خيار وخس.</td></tr>
+                                <tr class="hover:bg-[#087597]/30 smooth-transition"><td class="p-4 font-bold text-center text-[#00B59B] bg-[#045275]/50 lang-text" data-ar="الأربعاء" data-en="Wednesday">الأربعاء</td><td class="p-4 lang-text" data-ar="بيضة + نصف رغيف صغير + خيار." data-en="Egg + half small bread + cucumber.">بيضة + نصف رغيف صغير + خيار.</td><td class="p-4 text-[#00B59B] lang-text" data-ar="خوخة صغيرة أو تفاحة." data-en="Small peach or apple.">خوخة صغيرة أو تفاحة.</td><td class="p-4 lang-text" data-ar="100 جم سمك مشوي + 1 كوب أرز + كوب قرنبيط أو كوسة." data-en="100g grilled fish + 1 cup rice + cup cauliflower/zucchini.">100 جم سمك مشوي + 1 كوب أرز + كوب قرنبيط أو كوسة.</td><td class="p-4 lang-text" data-ar="60 جم دجاج بارد منزلي + نصف رغيف صغير + خس وخيار." data-en="60g cold homemade chicken + half small bread + lettuce/cucumber.">60 جم دجاج بارد منزلي + نصف رغيف صغير + خس وخيار.</td></tr>
+                                <tr class="hover:bg-[#087597]/30 smooth-transition"><td class="p-4 font-bold text-center text-[#00B59B] bg-[#045275]/50 lang-text" data-ar="الخميس" data-en="Thursday">الخميس</td><td class="p-4 lang-text" data-ar="2 بياض بيض + نصف رغيف صغير + شاي دون سكر أو بسكر محسوب." data-en="2 egg whites + half small bread + tea without sugar (or calculated).">2 بياض بيض + نصف رغيف صغير + شاي دون سكر أو بسكر محسوب.</td><td class="p-4 text-[#00B59B] lang-text" data-ar="عنب صغير أو تفاحة." data-en="Small grapes or apple.">عنب صغير أو تفاحة.</td><td class="p-4 lang-text" data-ar="90 جم لحم أو دجاج + 1 كوب أرز/فريك مطبوخ + كوب خضار مسلوق ومصفى." data-en="90g meat/chicken + 1 cup rice/freek + cup boiled drained vegetables.">90 جم لحم أو دجاج + 1 كوب أرز/فريك مطبوخ + كوب خضار مسلوق ومصفى.</td><td class="p-4 lang-text" data-ar="ساندوتش بيضة مسلوقة + خس وخيار، مع تقليل الصفار إذا كان الفوسفور مرتفعًا." data-en="Boiled egg sandwich + lettuce/cucumber, reduce yolk if phosphorus is high.">ساندوتش بيضة مسلوقة + خس وخيار، مع تقليل الصفار إذا كان الفوسفور مرتفعًا.</td></tr>
+                                <tr class="hover:bg-[#087597]/30 smooth-transition"><td class="p-4 font-bold text-center text-[#00B59B] bg-[#045275]/50 lang-text" data-ar="الجمعة" data-en="Friday">الجمعة</td><td class="p-4 lang-text" data-ar="بيضة مسلوقة + نصف رغيف صغير + خيار." data-en="Boiled egg + half small bread + cucumber.">بيضة مسلوقة + نصف رغيف صغير + خيار.</td><td class="p-4 text-[#00B59B] lang-text" data-ar="كمثرى صغيرة." data-en="Small pear.">كمثرى صغيرة.</td><td class="p-4 lang-text" data-ar="90–100 جم دجاج بالفرن + 1 كوب مكرونة أو أرز + كوب خضار مطبوخ." data-en="90-100g baked chicken + 1 cup pasta/rice + cup cooked vegetables.">90–100 جم دجاج بالفرن + 1 كوب مكرونة أو أرز + كوب خضار مطبوخ.</td><td class="p-4 lang-text" data-ar="شوربة شعرية منزلية خفيفة + 60 جم سمك أو دجاج + قطعة خبز صغيرة." data-en="Light homemade vermicelli soup + 60g fish/chicken + small bread piece.">شوربة شعرية منزلية خفيفة + 60 جم سمك أو دجاج + قطعة خبز صغيرة.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="mt-8 bg-[#045275] p-6 rounded-2xl border border-[#009693]/30 text-sm">
+                        <h5 class="text-xl font-bold text-[#00B59B] mb-4 lang-text" data-ar="إرشادات مهمة قبل الغسيل" data-en="Important Pre-Dialysis Guidelines">إرشادات مهمة قبل الغسيل</h5>
+                        <ul class="space-y-3 text-blue-100 list-disc list-inside">
+                            <li class="lang-text" data-ar="الهدف البروتيني لمعظم البالغين المصابين بـ CKD G3-G5 غير الخاضعين للغسيل يقارب 0.8 جم بروتين/كجم يوميًا. تعدل الخطة حسب الوزن المثالي، الحالة الغذائية، الزلال." data-en="Protein target for CKD G3-G5 non-dialysis is approx 0.8g/kg/day. Adjusted by ideal weight, nutritional status, albumin.">الهدف البروتيني لمعظم البالغين المصابين بـ CKD G3-G5 غير الخاضعين للغسيل يقارب 0.8 جم بروتين/كجم يوميًا. تعدل الخطة حسب الوزن المثالي، الحالة الغذائية، الزلال.</li>
+                            <li class="lang-text" data-ar="هذه القائمة نموذج عملي وليست وصفة محسوبة بدقة. لا تستخدم للأطفال أو الحوامل دون تقييم." data-en="This list is a practical model, not an exact prescription. Do not use for children or pregnant women without assessment.">هذه القائمة نموذج عملي وليست وصفة محسوبة بدقة. لا تستخدم للأطفال أو الحوامل دون تقييم.</li>
+                            <li class="lang-text" data-ar="البوتاسيوم: لا تمنع الفاكهة والخضار تلقائيًا. عند الارتفاع فضل التفاح والعنب والكمثرى، وقلل الموز والبرتقال والتمر والطماطم." data-en="Potassium: Do not restrict fruits/veg automatically. If high, prefer apples/grapes/pears, reduce bananas/oranges/dates/tomatoes.">البوتاسيوم: لا تمنع الفاكهة والخضار تلقائيًا. عند الارتفاع فضل التفاح والعنب والكمثرى، وقلل الموز والبرتقال والتمر والطماطم.</li>
+                            <li class="lang-text" data-ar="الفوسفور: قلل الكولا الداكنة واللحوم المصنعة والجبن المطبوخ." data-en="Phosphorus: Reduce dark cola, processed meats, and processed cheese.">الفوسفور: قلل الكولا الداكنة واللحوم المصنعة والجبن المطبوخ.</li>
+                            <li class="lang-text" data-ar="الصوديوم: استهدف أقل من 2 جم يوميًا (5 جم ملح). تجنب المخللات والشيبسي واللحوم المصنعة." data-en="Sodium: Target <2g daily (5g salt). Avoid pickles, chips, processed meats.">الصوديوم: استهدف أقل من 2 جم يوميًا (5 جم ملح). تجنب المخللات والشيبسي واللحوم المصنعة.</li>
+                            <li class="lang-text" data-ar="السوائل: تحدد حسب البول المتبقي، الوذمة، ضغط الدم وفشل القلب." data-en="Fluids: Determined by residual urine, edema, blood pressure, and heart failure.">السوائل: تحدد حسب البول المتبقي، الوذمة، ضغط الدم وفشل القلب.</li>
+                            <li class="text-[#00B59B] font-bold mt-4 lang-text" data-ar="المرجع الإرشادي: KDIGO 2024 CKD Guideline" data-en="Reference: KDIGO 2024 CKD Guideline">المرجع الإرشادي: KDIGO 2024 CKD Guideline</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-hemodialysis" class="tab-content">
+                <div class="bg-[#087597]/40 backdrop-blur-xl border border-[#009693]/40 rounded-3xl p-6 md:p-10 shadow-2xl">
+                    <div class="flex flex-col md:flex-row justify-between items-center border-b border-[#009693]/40 pb-6 mb-8 gap-4">
+                        <div>
+                            <h4 class="text-2xl font-bold text-[#F3F4D4] mb-2 lang-text" data-ar="نظام غذائي أسبوعي لمرضى الغسيل الكلوي" data-en="Weekly Diet Plan for Hemodialysis Patients">نظام غذائي أسبوعي لمرضى الغسيل الكلوي</h4>
+                            <p class="text-[#00B59B] font-semibold lang-text" data-ar="للمرضى على الغسيل الدموي المنتظم – نموذج بالغين" data-en="For Regular Hemodialysis Patients - Adult Model">للمرضى على الغسيل الدموي المنتظم – نموذج بالغين</p>
+                        </div>
+                        <!-- 👉 HEMODIALYSIS PDF: put this file next to the HTML.
+                             If you rename it, update the filename in href below. -->
+                        <a href="renal_diet_hemodialysis_ar(3)(1).pdf" download class="px-6 py-3 bg-[#00B59B] hover:bg-[#009693] text-[#045275] hover:text-[#F3F4D4] font-bold rounded-xl flex items-center gap-2 smooth-transition shrink-0 shadow-md">
+                            <i class="fa-solid fa-download"></i>
+                            <span class="lang-text" data-ar="تحميل PDF" data-en="Download PDF">تحميل PDF</span>
+                        </a>
+                    </div>
+                    <div class="bg-[#045275]/80 border border-[#00B59B]/40 rounded-2xl p-5 mb-8 flex gap-4 items-start">
+                        <i class="fa-solid fa-triangle-exclamation text-[#00B59B] text-xl mt-1"></i>
+                        <p class="text-[#F3F4D4] text-sm md:text-base lang-text" data-ar="تنبيه: هذا النظام أعلى في البروتين من نظام ما قبل الغسيل. تُعدّل حصص الطعام والسوائل والبوتاسيوم والفوسفور حسب الوزن الجاف والتحاليل وخطة جلسات الغسيل." data-en="Note: This diet is higher in protein than the pre-dialysis diet. Food, fluid, potassium, and phosphorus portions are adjusted based on dry weight, tests, and dialysis schedule.">تنبيه: هذا النظام أعلى في البروتين من نظام ما قبل الغسيل. تُعدّل حصص الطعام والسوائل والبوتاسيوم والفوسفور حسب الوزن الجاف والتحاليل وخطة جلسات الغسيل.</p>
+                    </div>
+                    <div class="overflow-x-auto custom-scrollbar pb-4">
+                        <table class="w-full text-start min-w-[800px]">
+                            <thead>
+                                <tr class="bg-[#045275] text-[#00B59B] text-sm">
+                                    <th class="p-4 rounded-s-2xl font-bold w-24 text-center lang-text" data-ar="اليوم" data-en="Day">اليوم</th>
+                                    <th class="p-4 font-bold lang-text" data-ar="الإفطار" data-en="Breakfast">الإفطار</th>
+                                    <th class="p-4 font-bold lang-text" data-ar="سناك" data-en="Snack">سناك</th>
+                                    <th class="p-4 font-bold lang-text" data-ar="الغداء" data-en="Lunch">الغداء</th>
+                                    <th class="p-4 rounded-e-2xl font-bold lang-text" data-ar="العشاء" data-en="Dinner">العشاء</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-[#009693]/20 text-[#F3F4D4] text-sm md:text-base">
+                                <tr class="hover:bg-[#087597]/30 smooth-transition"><td class="p-4 font-bold text-center text-[#00B59B] bg-[#045275]/50 lang-text" data-ar="السبت" data-en="Saturday">السبت</td><td class="p-4 lang-text" data-ar="بيضة كاملة + 2 بياض بيض + نصف رغيف صغير + خيار." data-en="Whole egg + 2 egg whites + half small bread + cucumber.">بيضة كاملة + 2 بياض بيض + نصف رغيف صغير + خيار.</td><td class="p-4 text-[#00B59B] lang-text" data-ar="تفاحة صغيرة. (+ سناك إضافي: 2 بسكويت سادة عند الحاجة)" data-en="Small apple. (+ Extra: 2 plain biscuits if needed)">تفاحة صغيرة. (+ سناك إضافي: 2 بسكويت سادة عند الحاجة)</td><td class="p-4 lang-text" data-ar="120 جم دجاج مشوي + 1 كوب أرز مطبوخ + كوب كوسة مطبوخة." data-en="120g grilled chicken + 1 cup cooked rice + cup cooked zucchini.">120 جم دجاج مشوي + 1 كوب أرز مطبوخ + كوب كوسة مطبوخة.</td><td class="p-4 lang-text" data-ar="ساندوتش تونة مصفاة بالماء (80 جم) + نصف رغيف صغير + خس." data-en="Water-drained tuna sandwich (80g) + half small bread + lettuce.">ساندوتش تونة مصفاة بالماء (80 جم) + نصف رغيف صغير + خس.</td></tr>
+                                <tr class="hover:bg-[#087597]/30 smooth-transition"><td class="p-4 font-bold text-center text-[#00B59B] bg-[#045275]/50 lang-text" data-ar="الأحد" data-en="Sunday">الأحد</td><td class="p-4 lang-text" data-ar="أومليت من بيضة و2 بياض مع بصل وفلفل + نصف رغيف صغير." data-en="Omelet (1 egg, 2 whites) with onion/pepper + half small bread.">أومليت من بيضة و2 بياض مع بصل وفلفل + نصف رغيف صغير.</td><td class="p-4 text-[#00B59B] lang-text" data-ar="عنب 10–12 حبة." data-en="Grapes 10-12.">عنب 10–12 حبة.</td><td class="p-4 lang-text" data-ar="120 جم سمك مشوي + كوب مكرونة مطبوخة + كوب قرنبيط." data-en="120g grilled fish + cup cooked pasta + cup cauliflower.">120 جم سمك مشوي + كوب مكرونة مطبوخة + كوب قرنبيط.</td><td class="p-4 lang-text" data-ar="90 جم دجاج مفتت + نصف رغيف صغير + سلطة خيار وخس." data-en="90g shredded chicken + half small bread + cucumber/lettuce salad.">90 جم دجاج مفتت + نصف رغيف صغير + سلطة خيار وخس.</td></tr>
+                                <tr class="hover:bg-[#087597]/30 smooth-transition"><td class="p-4 font-bold text-center text-[#00B59B] bg-[#045275]/50 lang-text" data-ar="الاثنين" data-en="Monday">الاثنين</td><td class="p-4 lang-text" data-ar="بيضة مسلوقة + 2 بياض + نصف رغيف صغير." data-en="Boiled egg + 2 whites + half small bread.">بيضة مسلوقة + 2 بياض + نصف رغيف صغير.</td><td class="p-4 text-[#00B59B] lang-text" data-ar="تفاحة صغيرة." data-en="Small apple.">تفاحة صغيرة.</td><td class="p-4 lang-text" data-ar="120 جم لحم قليل الدهن + كوب أرز + كوب فاصوليا خضراء." data-en="120g lean meat + cup rice + cup green beans.">120 جم لحم قليل الدهن + كوب أرز + كوب فاصوليا خضراء.</td><td class="p-4 lang-text" data-ar="ساندوتش تونة 80 جم أو دجاج 90 جم + خس وخيار." data-en="Tuna sandwich 80g or chicken 90g + lettuce and cucumber.">ساندوتش تونة 80 جم أو دجاج 90 جم + خس وخيار.</td></tr>
+                                <tr class="hover:bg-[#087597]/30 smooth-transition"><td class="p-4 font-bold text-center text-[#00B59B] bg-[#045275]/50 lang-text" data-ar="الثلاثاء" data-en="Tuesday">الثلاثاء</td><td class="p-4 lang-text" data-ar="2 بياض + بيضة + نصف رغيف صغير." data-en="2 whites + egg + half small bread.">2 بياض + بيضة + نصف رغيف صغير.</td><td class="p-4 text-[#00B59B] lang-text" data-ar="كمثرى صغيرة." data-en="Small pear.">كمثرى صغيرة.</td><td class="p-4 lang-text" data-ar="120 جم دجاج + كوب مكرونة + كوب كوسة." data-en="120g chicken + cup pasta + cup zucchini.">120 جم دجاج + كوب مكرونة + كوب كوسة.</td><td class="p-4 lang-text" data-ar="100 جم سمك مشوي + نصف رغيف صغير + سلطة خس وخيار." data-en="100g grilled fish + half small bread + lettuce/cucumber salad.">100 جم سمك مشوي + نصف رغيف صغير + سلطة خس وخيار.</td></tr>
+                                <tr class="hover:bg-[#087597]/30 smooth-transition"><td class="p-4 font-bold text-center text-[#00B59B] bg-[#045275]/50 lang-text" data-ar="الأربعاء" data-en="Wednesday">الأربعاء</td><td class="p-4 lang-text" data-ar="أومليت بيضة و2 بياض + نصف رغيف صغير." data-en="Omelet (egg and 2 whites) + half small bread.">أومليت بيضة و2 بياض + نصف رغيف صغير.</td><td class="p-4 text-[#00B59B] lang-text" data-ar="تفاحة." data-en="Apple.">تفاحة.</td><td class="p-4 lang-text" data-ar="120 جم سمك مشوي + كوب أرز + كوب قرنبيط/كوسة." data-en="120g grilled fish + cup rice + cup cauliflower/zucchini.">120 جم سمك مشوي + كوب أرز + كوب قرنبيط/كوسة.</td><td class="p-4 lang-text" data-ar="90 جم دجاج + نصف رغيف صغير + خيار وخس." data-en="90g chicken + half small bread + cucumber and lettuce.">90 جم دجاج + نصف رغيف صغير + خيار وخس.</td></tr>
+                                <tr class="hover:bg-[#087597]/30 smooth-transition"><td class="p-4 font-bold text-center text-[#00B59B] bg-[#045275]/50 lang-text" data-ar="الخميس" data-en="Thursday">الخميس</td><td class="p-4 lang-text" data-ar="بيضة + 2 بياض + نصف رغيف صغير." data-en="Egg + 2 whites + half small bread.">بيضة + 2 بياض + نصف رغيف صغير.</td><td class="p-4 text-[#00B59B] lang-text" data-ar="عنب صغير." data-en="Small grapes.">عنب صغير.</td><td class="p-4 lang-text" data-ar="120 جم لحم أو دجاج + كوب أرز/مكرونة + كوب خضار مناسب." data-en="120g meat or chicken + cup rice/pasta + cup suitable vegetables.">120 جم لحم أو دجاج + كوب أرز/مكرونة + كوب خضار مناسب.</td><td class="p-4 lang-text" data-ar="ساندوتش تونة مصفاة 80 جم + خس وخيار." data-en="Water-drained tuna sandwich 80g + lettuce and cucumber.">ساندوتش تونة مصفاة 80 جم + خس وخيار.</td></tr>
+                                <tr class="hover:bg-[#087597]/30 smooth-transition"><td class="p-4 font-bold text-center text-[#00B59B] bg-[#045275]/50 lang-text" data-ar="الجمعة" data-en="Friday">الجمعة</td><td class="p-4 lang-text" data-ar="بيضة + 2 بياض + نصف رغيف صغير." data-en="Egg + 2 whites + half small bread.">بيضة + 2 بياض + نصف رغيف صغير.</td><td class="p-4 text-[#00B59B] lang-text" data-ar="تفاحة صغيرة." data-en="Small apple.">تفاحة صغيرة.</td><td class="p-4 lang-text" data-ar="120 جم دجاج بالفرن + كوب مكرونة + كوب كوسة أو فاصوليا خضراء." data-en="120g baked chicken + cup pasta + cup zucchini or green beans.">120 جم دجاج بالفرن + كوب مكرونة + كوب كوسة أو فاصوليا خضراء.</td><td class="p-4 lang-text" data-ar="100 جم سمك مشوي + نصف رغيف صغير + سلطة خس وخيار." data-en="100g grilled fish + half small bread + lettuce/cucumber salad.">100 جم سمك مشوي + نصف رغيف صغير + سلطة خس وخيار.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="mt-8 bg-[#045275] p-6 rounded-2xl border border-[#009693]/30 text-sm">
+                        <h5 class="text-xl font-bold text-[#00B59B] mb-4 lang-text" data-ar="إرشادات مهمة لمرضى الغسيل الدموي" data-en="Important Hemodialysis Guidelines">إرشادات مهمة لمرضى الغسيل الدموي</h5>
+                        <ul class="space-y-3 text-blue-100 list-disc list-inside">
+                            <li class="lang-text" data-ar="الهدف البروتيني المرجعي للبالغ المستقر على الغسيل الدموي غالبًا 1.0–1.2 جم بروتين/كجم/يوم. لا يُنصح بتقييد البروتين كما في مرضى ما قبل الغسيل؛ فقد يؤدي ذلك إلى سوء التغذية." data-en="Protein target for stable adult on hemodialysis is usually 1.0-1.2g/kg/day. Do NOT restrict protein like pre-dialysis patients; it causes malnutrition.">الهدف البروتيني المرجعي للبالغ المستقر على الغسيل الدموي غالبًا 1.0–1.2 جم بروتين/كجم/يوم. لا يُنصح بتقييد البروتين كما في مرضى ما قبل الغسيل؛ فقد يؤدي ذلك إلى سوء التغذية.</li>
+                            <li class="lang-text" data-ar="هذه القائمة نموذج عام؛ يلزم حساب الطاقة والبروتين فرديًا إذا كان المريض يعاني سوء تغذية أو سمنة شديدة أو التهابًا." data-en="This is a general model; individual calculation is needed if the patient has malnutrition, severe obesity, or inflammation.">هذه القائمة نموذج عام؛ يلزم حساب الطاقة والبروتين فرديًا إذا كان المريض يعاني سوء تغذية أو سمنة شديدة أو التهابًا.</li>
+                            <li class="lang-text" data-ar="البوتاسيوم: الاختيار حسب تحليل ما قبل الغسيل. لا تستخدم بدائل الملح المحتوية على potassium chloride." data-en="Potassium: Choice depends on pre-dialysis tests. Do not use salt substitutes containing potassium chloride.">البوتاسيوم: الاختيار حسب تحليل ما قبل الغسيل. لا تستخدم بدائل الملح المحتوية على potassium chloride.</li>
+                            <li class="lang-text" data-ar="الفوسفور: تناول رابط الفوسفات الموصوف مع الوجبات حسب تعليمات الطبيب." data-en="Phosphorus: Take prescribed phosphate binders with meals as directed by the doctor.">الفوسفور: تناول رابط الفوسفات الموصوف مع الوجبات حسب تعليمات الطبيب.</li>
+                            <li class="lang-text" data-ar="السوائل: يحددها طبيب الكلى وفق الزيادة بين الجلسات. احسب الشوربة والثلج والجيلي ضمن السوائل." data-en="Fluids: Determined by nephrologist based on interdialytic weight gain. Count soup, ice, and jelly as fluids.">السوائل: يحددها طبيب الكلى وفق الزيادة بين الجلسات. احسب الشوربة والثلج والجيلي ضمن السوائل.</li>
+                            <li class="lang-text" data-ar="في أيام الغسيل: تناول وجبة خفيفة مناسبة قبل الجلسة، وتجنب الوجبة الكبيرة أثناء الجلسة لتجنب هبوط الضغط." data-en="On dialysis days: Have a suitable light meal before the session, avoid large meals during the session to prevent hypotension.">في أيام الغسيل: تناول وجبة خفيفة مناسبة قبل الجلسة، وتجنب الوجبة الكبيرة أثناء الجلسة لتجنب هبوط الضغط.</li>
+                            <li class="text-[#00B59B] font-bold mt-4 lang-text" data-ar="المرجع الإرشادي: KDOQI Nutrition in CKD 2020؛ وتوصيات ADA 2026." data-en="Reference: KDOQI Nutrition in CKD 2020; and ADA 2026 guidelines.">المرجع الإرشادي: KDOQI Nutrition in CKD 2020؛ وتوصيات ADA 2026.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white dark:bg-[#045275]/90 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="px-4 py-1.5 bg-[#009693]/10 dark:bg-[#009693]/30 text-[#009693] dark:text-[#00B59B] font-bold rounded-full text-sm inline-block mb-3 lang-text" data-ar="المحتوى المرئي والتوعوي" data-en="Educational Videos">المحتوى المرئي والتوعوي</span>
+                <h3 class="text-3xl sm:text-4xl font-black text-[#045275] dark:text-white mb-4 lang-text" data-ar="نصائح طبية وفيديوهات توعوية" data-en="Medical Tips & Educational Videos">نصائح طبية وفيديوهات توعوية</h3>
+            </div>
+
+            <!--
+            ══════════════════════════════════════════════════════════════════
+              📹  REELS / SHORT VIDEOS SECTION
+            ══════════════════════════════════════════════════════════════════
+
+              Put your video files in the SAME folder as this HTML:
+
+                  vid1.mp4   → hypertension video
+                  vid2.mp4   → diabetes video
+
+              To add a 3rd video, copy one <div> below and update:
+                 - src="vid3.mp4"
+                 - poster="..." (the yellow placeholder text)
+                 - the Arabic/English title inside <p class="lang-text" ...>
+
+              ▶ Accepted formats: .mp4 (best), .webm, .mov
+              ▶ Vertical 9:16 recommended (1080×1920 px)
+              ══════════════════════════════════════════════════════════════════
+            -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+
+                <!-- ═══════════════ REEL 1 — Hypertension ═══════════════ -->
+                <div class="bg-[#F3F4D4]/40 dark:bg-[#087597]/30 rounded-3xl p-3 shadow-lg border border-[#009693]/20 dark:border-[#009693]/30 hover:shadow-xl smooth-transition">
+                    <div class="video-container aspect-[9/16] rounded-2xl">
+                        <!-- 👉 PUT YOUR VIDEO AT: vid1.mp4 -->
+                        <video
+                            class="reel-video w-full h-full object-cover"
+                            src="vid1.mp4"
+                            playsinline
+                            preload="metadata">
+                        </video>
+                        <button type="button" class="play-btn play-btn-small" onclick="playReel(this)" aria-label="Play video">
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                    </div>
+                    <div class="p-4 text-center">
+                        <p class="font-bold text-base text-[#045275] dark:text-[#F3F4D4] lang-text" data-ar="أعراض ارتفاع ضغط الدم" data-en="Symptoms of Hypertension">مشاكل الكلى والقصور الكلوي وكيفية أكتشاف مشاكل تلم بالكلى</p>
+                    </div>
+                </div>
+                <!-- ═══════════════ END REEL 1 ═══════════════ -->
+
+                <!-- ═══════════════ REEL 2 — Diabetes ═══════════════ -->
+                <div class="bg-[#F3F4D4]/40 dark:bg-[#087597]/30 rounded-3xl p-3 shadow-lg border border-[#009693]/20 dark:border-[#009693]/30 hover:shadow-xl smooth-transition">
+                    <div class="video-container aspect-[9/16] rounded-2xl">
+                        <!-- 👉 PUT YOUR VIDEO AT: vid2.mp4 -->
+                        <video
+                            class="reel-video w-full h-full object-cover"
+                            src="vid2.mp4"
+                            playsinline
+                            preload="metadata">
+                        </video>
+                        <button type="button" class="play-btn play-btn-small" onclick="playReel(this)" aria-label="Play video">
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                    </div>
+                    <div class="p-4 text-center">
+                        <p class="font-bold text-base text-[#045275] dark:text-[#F3F4D4] lang-text" data-ar="الوقاية من مضاعفات السكر" data-en="Preventing Diabetes Complications">الوقاية من مضاعفات السكر</p>
+                    </div>
+                </div>
+                <!-- ═══════════════ END REEL 2 ═══════════════ -->
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-[#F3F4D4] dark:bg-[#045275] transition-colors duration-300" id="booking">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="px-4 py-1.5 bg-[#009693]/20 text-[#009693] dark:text-[#00B59B] font-bold rounded-full text-sm inline-block mb-3 lang-text" data-ar="احجز موعدك الآن" data-en="Book Your Appointment">احجز موعدك الآن</span>
+                <h3 class="text-3xl sm:text-4xl font-black text-[#045275] dark:text-white mb-4 lang-text" data-ar="العيادات ومواعيد العمل" data-en="Clinics & Working Hours">العيادات ومواعيد العمل</h3>
+                <p class="text-lg text-[#087597] dark:text-blue-200 lang-text" data-ar="للحجز والاستفسار كلمونا واحجز مكانك من دلوقتي." data-en="For reservations and inquiries, call us and book your spot now.">للحجز والاستفسار كلمونا واحجز مكانك من دلوقتي.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="bg-white dark:bg-[#087597]/40 border-2 border-[#009693]/20 dark:border-[#009693]/40 p-8 rounded-3xl shadow-lg hover:shadow-xl smooth-transition">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-[#045275] dark:bg-[#009693] text-[#F3F4D4] rounded-2xl flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-location-dot text-[#00B59B]"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-2xl font-bold text-[#045275] dark:text-white mb-2 lang-text" data-ar="عيادة نجع حمادي" data-en="Nag Hammadi Clinic">عيادة نجع حمادي</h4>
+                                <p class="text-[#087597] dark:text-blue-100 mb-4 font-medium lang-text" data-ar="نجع حمادي – عمارة الأوقاف – الدور الرابع (مصعد متوفر)" data-en="Nag Hammadi - Al-Awqaf Building - 4th Floor (Elevator available)">نجع حمادي – عمارة الأوقاف – الدور الرابع (مصعد متوفر)</p>
+                                <div class="flex items-center text-[#009693] dark:text-[#00B59B] font-bold text-lg">
+                                    <i class="fa-solid fa-phone me-2"></i>
+                                    <a href="tel:01003375228" class="hover:underline" style="direction: ltr;">01003375228</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white dark:bg-[#087597]/40 border-2 border-[#009693]/20 dark:border-[#009693]/40 p-8 rounded-3xl shadow-lg hover:shadow-xl smooth-transition">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-[#087597] dark:bg-[#009693] text-[#F3F4D4] rounded-2xl flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-location-dot text-[#00B59B]"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-2xl font-bold text-[#045275] dark:text-white mb-2 lang-text" data-ar="عيادة سوهاج" data-en="Sohag Clinic">عيادة سوهاج</h4>
+                                <p class="text-[#087597] dark:text-blue-100 mb-4 font-medium lang-text" data-ar="سوهاج - طريق أخميم - بجوار مستشفى الدكتور جمال عبداللطيف" data-en="Sohag - Akhmim Road - Next to Dr. Gamal Abdel Latif Hospital">سوهاج - طريق أخميم - بجوار مستشفى الدكتور جمال عبداللطيف</p>
+                                <div class="flex items-center text-[#009693] dark:text-[#00B59B] font-bold text-lg">
+                                    <i class="fa-solid fa-phone me-2"></i>
+                                    <a href="tel:01147060804" class="hover:underline" style="direction: ltr;">01147060804</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-[#045275] text-[#F3F4D4] p-8 rounded-3xl shadow-lg border border-[#009693]/30">
+                        <h4 class="text-xl font-bold text-[#00B59B] mb-4 flex items-center">
+                            <i class="fa-regular fa-clock me-3"></i>
+                            <span class="lang-text" data-ar="مواعيد العيادة" data-en="Clinic Schedule">مواعيد العيادة</span>
+                        </h4>
+                        <ul class="space-y-3 text-blue-100 font-medium">
+                            <li class="flex justify-between border-b border-[#009693]/30 pb-3">
+                                <span class="lang-text" data-ar="الثلاثاء" data-en="Tuesday">الثلاثاء</span>
+                                <span class="text-[#00B59B] font-bold lang-text" data-ar="من 4م إلى 6م" data-en="4:00 PM - 6:00 PM" style="direction: rtl;">من 4م إلى 6م</span>
+                            </li>
+                            <li class="flex justify-between pt-1">
+                                <span class="lang-text" data-ar="الجمعة" data-en="Friday">الجمعة</span>
+                                <div class="text-end">
+                                    <span class="block text-[#00B59B] font-bold lang-text" data-ar="من 3م إلى 5م" data-en="3:00 PM - 5:00 PM" style="direction: rtl;">من 3م إلى 5م</span>
+                                    <span class="block text-[#00B59B] font-bold lang-text mt-1" data-ar="ومن 7م إلى 10م" data-en="& 7:00 PM - 10:00 PM" style="direction: rtl;">ومن 7م إلى 10م</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 bg-white rounded-3xl overflow-hidden shadow-2xl h-[550px] border-2 border-[#009693]/20">
+                    <iframe src="https://maps.google.com/maps?q=26.1262662,32.4696002&z=17&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#045275] text-[#F3F4D4] py-16 border-t border-[#009693]/30" id="contact">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-start gap-8">
+                <div>
+                    <h2 class="text-3xl font-black mb-2 lang-text text-[#F3F4D4]" data-ar="د. محمد حمدي البريري" data-en="Dr. Mohamed Hamdy El-Berery">د. محمد حمدي البريري</h2>
+                    <p class="text-[#00B59B] font-semibold lang-text text-lg" data-ar="استشاري أمراض الباطنة العامة والكلى والسكر" data-en="Internal Medicine, Nephrology & Diabetes Consultant">استشاري أمراض الباطنة العامة والكلى والسكر</p>
+                </div>
+                
+                <div class="flex flex-col items-center md:items-end gap-2 text-[#00B59B] font-black text-xl">
+                    <span dir="ltr">#عيادات_دار_مصر</span>
+                    <span dir="ltr">#معانا_هتطمن</span>
+                </div>
+            </div>
+            
+            <hr class="border-[#009693]/30 my-8">
+            
+            <div class="text-center text-blue-200 text-sm">
+                &copy; <span id="year"></span> <span class="lang-text" data-ar="جميع الحقوق محفوظة." data-en="All Rights Reserved.">جميع الحقوق محفوظة.</span>
+            </div>
+        </div>
+    </footer>
+
+    <button onclick="openContactModal()" class="fixed bottom-6 right-6 lg:bottom-10 lg:right-10 z-40 w-16 h-16 bg-[#00B59B] text-[#045275] rounded-full shadow-2xl flex items-center justify-center text-3xl hover:bg-[#009693] hover:text-[#F3F4D4] hover:scale-110 smooth-transition focus:outline-none ring-4 ring-[#00B59B]/40">
+        <i class="fa-regular fa-comment-dots"></i>
+    </button>
+
+
+    <div id="contactModal" class="fixed inset-0 z-50 flex items-center justify-center px-4 opacity-0 pointer-events-none transition-opacity duration-300">
+
+        <div class="absolute inset-0 bg-[#045275]/70 backdrop-blur-sm" onclick="closeContactModal()"></div>
+        
+
+        <div class="bg-[#F3F4D4] rounded-3xl shadow-2xl w-full max-w-sm relative z-10 p-8 transform scale-95 transition-transform duration-300 border-2 border-[#009693]/30" id="modalContent">
+            <button onclick="closeContactModal()" class="absolute top-4 right-4 w-9 h-9 flex items-center justify-center bg-[#045275] text-[#F3F4D4] rounded-full hover:bg-[#087597] smooth-transition">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <h3 class="text-2xl font-black text-[#045275] mb-6 text-center lang-text" data-ar="تواصل معنا للحجز" data-en="Contact Us for Booking">تواصل معنا للحجز</h3>
+            
+            <div class="flex flex-col gap-4">
+
+                <a href="https://wa.me/201003375228" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 w-full px-6 py-4 bg-[#25D366] hover:bg-[#20b858] text-white rounded-2xl font-bold text-lg smooth-transition hover:-translate-y-1 shadow-md shadow-green-600/30">
+                    <i class="fa-brands fa-whatsapp text-3xl"></i>
+                    <span class="lang-text" data-ar="واتساب" data-en="WhatsApp">واتساب</span>
+                </a>
+                
+
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 w-full px-6 py-4 bg-[#1877F2] hover:bg-[#1560c5] text-white rounded-2xl font-bold text-lg smooth-transition hover:-translate-y-1 shadow-md shadow-blue-600/30">
+                    <i class="fa-brands fa-facebook text-3xl"></i>
+                    <span class="lang-text" data-ar="فيسبوك" data-en="Facebook">فيسبوك</span>
+                </a>
+                
+
+                <a href="#" class="flex items-center gap-4 w-full px-6 py-4 bg-[#009693] hover:bg-[#00B59B] text-[#F3F4D4] rounded-2xl font-bold text-lg smooth-transition hover:-translate-y-1 shadow-md shadow-teal-600/30">
+                    <i class="fa-brands fa-facebook-messenger text-3xl"></i>
+                    <span class="lang-text" data-ar="ماسنجر" data-en="Messenger">ماسنجر</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+
+        function applyTheme(theme, persist = true) {
+            const isDark = theme === 'dark';
+            document.documentElement.classList.toggle('dark', isDark);
+            themeIcon.className = isDark
+                ? 'fa-solid fa-sun text-lg text-yellow-300'
+                : 'fa-solid fa-moon text-lg';
+            themeToggleBtn.setAttribute('aria-pressed', String(isDark));
+            themeToggleBtn.setAttribute('title', isDark ? 'Light mode' : 'Dark mode');
+            if (persist) localStorage.setItem('theme', theme);
+        }
+
+        function toggleTheme() {
+            const isDark = document.documentElement.classList.contains('dark');
+            applyTheme(isDark ? 'light' : 'dark');
+        }
+
+        // Sync icon + button state with whatever theme was applied in <head>
+        (function initTheme() {
+            const saved = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            applyTheme(saved || (prefersDark ? 'dark' : 'light'), false);
+        })();
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.getElementById('btn-pre-dialysis').className = "px-8 py-4 rounded-2xl font-bold text-lg smooth-transition border-2 border-[#087597] bg-[#087597]/50 text-[#F3F4D4] hover:bg-[#087597] flex items-center justify-center gap-3";
+            document.getElementById('btn-hemodialysis').className = "px-8 py-4 rounded-2xl font-bold text-lg smooth-transition border-2 border-[#087597] bg-[#087597]/50 text-[#F3F4D4] hover:bg-[#087597] flex items-center justify-center gap-3";
+            
+            document.getElementById('tab-' + tabId).classList.add('active');
+            document.getElementById('btn-' + tabId).className = "px-8 py-4 rounded-2xl font-bold text-lg smooth-transition border-2 border-[#00B59B] bg-[#009693] text-[#F3F4D4] shadow-lg shadow-[#009693]/30 flex items-center justify-center gap-3";
+        }
+
+        let currentLang = 'ar';
+        const langLabel = document.getElementById('langLabel');
+        const langElements = document.querySelectorAll('.lang-text');
+
+        function toggleLanguage() {
+            if (currentLang === 'ar') {
+                document.documentElement.setAttribute('lang', 'en');
+                document.documentElement.setAttribute('dir', 'ltr');
+                document.body.classList.add('lang-en');
+                langLabel.textContent = 'العربية';
+                
+                langElements.forEach(el => {
+                    if (el.getAttribute('data-en')) {
+                        el.innerHTML = el.getAttribute('data-en');
+                    }
+                });
+                currentLang = 'en';
+            } else {
+                document.documentElement.setAttribute('lang', 'ar');
+                document.documentElement.setAttribute('dir', 'rtl');
+                document.body.classList.remove('lang-en');
+                langLabel.textContent = 'English';
+                
+                langElements.forEach(el => {
+                    if (el.getAttribute('data-ar')) {
+                        el.innerHTML = el.getAttribute('data-ar');
+                    }
+                });
+                currentLang = 'ar';
+            }
+        }
+
+        function openContactModal() {
+            const modal = document.getElementById('contactModal');
+            const content = document.getElementById('modalContent');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-100');
+            content.classList.remove('scale-95');
+            content.classList.add('scale-100');
+        }
+
+        function closeContactModal() {
+            const modal = document.getElementById('contactModal');
+            const content = document.getElementById('modalContent');
+            modal.classList.remove('opacity-100');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            content.classList.remove('scale-100');
+            content.classList.add('scale-95');
+        }
+
+        // ────────────────────────────────────────────────────────────────
+        // REEL PLAYBACK HANDLER
+        // ────────────────────────────────────────────────────────────────
+        // Click the play button → the video starts and the button hides.
+        // If the video file is missing, we show a clear console warning
+        // telling you exactly which path to add. The button stays visible
+        // so you can try again after adding the file.
+        // ────────────────────────────────────────────────────────────────
+        function playReel(btn) {
+            const container = btn.closest('.video-container');
+            const video = container.querySelector('video');
+            if (!video) return;
+
+            if (video.paused) {
+                // Pause any other reels that might be playing
+                document.querySelectorAll('.reel-video').forEach(v => {
+                    if (v !== video && !v.paused) {
+                        v.pause();
+                        const otherBtn = v.parentElement.querySelector('.play-btn');
+                        if (otherBtn) otherBtn.classList.remove('is-hidden');
+                    }
+                });
+
+                const playPromise = video.play();
+                if (playPromise && playPromise.then) {
+                    playPromise
+                        .then(() => {
+                            video.setAttribute('controls', 'controls');
+                            btn.classList.add('is-hidden');
+                        })
+                        .catch((err) => {
+                            const src = video.getAttribute('src');
+                            console.warn('⚠️  Could not play this reel. Make sure the file exists at:');
+                            console.warn('    ' + src);
+                            console.warn('    Error details:', err && err.message ? err.message : err);
+                        });
+                } else {
+                    // Older browsers without Promise-returning play()
+                    video.setAttribute('controls', 'controls');
+                    btn.classList.add('is-hidden');
+                }
+            } else {
+                video.pause();
+                btn.classList.remove('is-hidden');
+            }
+        }
+
+        // Restore the play button when the video ends or is paused externally
+        document.querySelectorAll('.reel-video').forEach(video => {
+            const btn = video.parentElement.querySelector('.play-btn');
+            const restore = () => {
+                if (!btn) return;
+                btn.classList.remove('is-hidden');
+                if (video.paused) video.removeAttribute('controls');
+            };
+            video.addEventListener('ended', restore);
+            video.addEventListener('pause', restore);
+
+            // Also warn early if the video fails to load metadata
+            video.addEventListener('error', () => {
+                const src = video.getAttribute('src');
+                console.warn('⚠️  Video failed to load. Expected file at: ' + src);
+            });
+        });
+    </script>
+</body>
+</html>
